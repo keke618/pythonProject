@@ -18,4 +18,29 @@
 # os.mkdir('Networking')
 
 import os
-os.chdir('test')
+
+
+def find_file_name():
+    file_name_list = []
+    for file_path , file_dir , file_files in os.walk(os.getcwd()):
+        for name in file_files:
+            file_name_list.append(name)
+    return file_name_list
+
+
+def search_content(file_list):
+    key = 'Networking'
+    for file in file_list:
+        with open(file , 'r', encoding='utf-8') as f:
+            if key in f.read():
+                print(file)
+
+
+if __name__ == '__main__':
+    os.chdir('test')
+    print('文件中包含"Networking"关键字的文件为：')
+    # print(find_file_name())
+    search_content(find_file_name())
+
+
+
