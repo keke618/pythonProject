@@ -1,4 +1,4 @@
-#!/usr/bin/python3.8.6
+# !/usr/bin/python3.8.6
 # -*- coding=utf-8 -*-
 # from import HTTPServer, CGIHTTPRequestHandler
 # port = 80
