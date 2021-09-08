@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 import random
 
 name = ['万前','梁栋','张毅','李政','周煜林','谢雄鑫']

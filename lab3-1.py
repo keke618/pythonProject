@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 import re
 
 mac = '166 54a2.74f7.0326 DYNAMIC Gi1/0/11'

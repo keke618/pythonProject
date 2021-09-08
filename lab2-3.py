@@ -10,7 +10,6 @@ fig = 0
 for i in num_list:
     fig = fig + i
 print("100个整数之和",fig)
-
 print("100个整数中最大值",max(num_list))
 print("100个整数中最小值",min(num_list))
 
