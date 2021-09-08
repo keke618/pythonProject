@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 # Q1
-print('Today is 2021-9-28')
+print('Today is'+' 2021-9-28')
 # Q2
 str1 = 'python'
 str2 = f'{str1[2:]}-{str1[0:2]}'
