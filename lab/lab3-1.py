@@ -7,7 +7,6 @@ mac = '166 54a2.74f7.0326 DYNAMIC Gi1/0/11'
 vlanid = re.search('(\d{1,4})',mac)
 print('VLAN ID    : ', vlanid.group())
 
-
 # mac1 = re.search('\s(.*?)\s',mac)
 mac1 = re.search('([0-9|a-f]{4}.){2}[0-9|a-f]{4}', mac)
 print('MAC        : ', mac1.group())

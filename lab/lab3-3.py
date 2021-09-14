@@ -33,4 +33,12 @@ print(ifconfig_result)
 # print(info)
 
 result = re.match('.*inet\s+(\d+\.\d+\.\d+\.\d+)\s+netmask\s+(\d+\.\d+\.\d+\.\d+)\s+broadcast\s+(\d+\.\d+\.\d+\.\d+).*ether\s+(\w+:\w+:\w+:\w+:\w+:\w+).*', ifconfig_result, re.S).groups()
-print(result)
+
+info = f'''
+IPADD     : {result[0]:<20}
+NETMASK   : {result[1]:<20}
+BROADCAST : {result[2]:<20}
+MAC       : {result[3]:<20}
+'''
+# print(result)
+print(info)
