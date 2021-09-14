@@ -19,15 +19,18 @@ print(ifconfig_result)
 #         TX packets 6475573  bytes 11686436753 (10.8 GiB)
 #         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 # '''
-IP = re.search('([0-9]{3}.)([0-9]{2}.){2}([0-9]{2})', ifconfig_result)
-NETMASK = re.search('([0-9]{3}.){3}[0]', ifconfig_result)
-BROADCAST = re.search('([0-9]{3}.)([0-9]{2}.){2}([0-9]{3})', ifconfig_result)
-MAC = re.search('([0-9|a-f]{2}:){5}([0-9|a-f]{2})', ifconfig_result)
-info = f'''
-IPADD     : {IP.group():<20}
-NETMASK   : {NETMASK.group():<20}
-BROADCAST : {BROADCAST.group():<20}
-MAC       : {MAC.group():<20}
-'''
-print(info)
 
+# IP = re.search('([0-9]{3}.)([0-9]{2}.){2}([0-9]{2})', ifconfig_result)
+# NETMASK = re.search('([0-9]{3}.){3}[0]', ifconfig_result)
+# BROADCAST = re.search('([0-9]{3}.)([0-9]{2}.){2}([0-9]{3})', ifconfig_result)
+# MAC = re.search('([0-9|a-f]{2}:){5}([0-9|a-f]{2})', ifconfig_result)
+# info = f'''
+# IPADD     : {IP.group():<20}
+# NETMASK   : {NETMASK.group():<20}
+# BROADCAST : {BROADCAST.group():<20}
+# MAC       : {MAC.group():<20}
+# '''
+# print(info)
+
+result = re.match('.*inet\s+(\d+\.\d+\.\d+\.\d+)\s+netmask\s+(\d+\.\d+\.\d+\.\d+)\s+broadcast\s+(\d+\.\d+\.\d+\.\d+).*ether\s+(\w+:\w+:\w+:\w+:\w+:\w+).*', ifconfig_result, re.S).groups()
+print(result)
