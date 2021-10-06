@@ -20,6 +20,7 @@ for P3 in list_c:
     print(f'{P3} only in list2')
 
 
+
 # # 常规写法
 # list_a = []                   # 两个列表表都存在的元素
 # for x in list1:

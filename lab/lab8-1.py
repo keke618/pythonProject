@@ -2,19 +2,18 @@
 # # -*- coding=utf-8 -*-
 # from http.server import CGIHTTPRequestHandler,HTTPServer
 
-import re
 import os
+from time import sleep
 
-netstat = os.popen("netstat -tulnp").read()
-print(netstat)
-httpd_port = re.search('(:[8][0])', netstat)
-port = ':80'
-print(httpd_port)
-# while httpd_port != 80:
-#     print('等待一秒重新检测')
-#     if httpd_port.group() == port:
-#         print('http(tcp/80)服务已打开')
-#         break
+
+while True:
+    netstat = os.popen("netstat -tulnp | grep '80' | grep tcp").read()
+    if '80' not in netstat:
+        print('等待一秒重新开始监控')
+        sleep(1)
+    if '80' in netstat:
+        print('HTTP(TCP/80)服务已打开')
+        break
 
 
 
