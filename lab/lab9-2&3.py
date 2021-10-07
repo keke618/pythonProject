@@ -18,5 +18,5 @@ def xxx_ssh(ip, username, port, passwd, cmd):
 
 
 if __name__ == '__main__':
-    print(xxx_ssh('192.168.80.10', 'root', '22', 'redhat', 'ls'))
-    print(xxx_ssh('192.168.80.10', 'root', '22', 'redhat', 'pwd'))
+    print(xxx_ssh('172.17.21.74', 'root', '22', '+q19936110', 'pwd'))
+    # print(xxx_ssh('192.168.80.10', 'root', '22', 'redhat', 'pwd'))
