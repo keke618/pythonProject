@@ -7,56 +7,7 @@
 import sqlite3
 
 
-# class SelectSQL(object):
-#     conn = sqlite3.connect('homework.db')
-#     tab = conn.cursor()
-#     cur = tab.execute('''SELECT * FROM TABINFO;''')
-#
-#     def sqlid_select(self):
-#         sid = input('请输入id号')
-#         for s_id in self.cur:
-#             if sid == s_id[0]:
-#                 print("ID = ", s_id[0])
-#                 print("NAME = ", s_id[1])
-#                 print("HOMEWORK_NUM = ", s_id[2])
-#
-#     def name_select(self):
-#         name = input('请输入名字')
-#         for s_name in self.cur:
-#             if name == s_name[0]:
-#                 print("ID = ", s_name[0])
-#                 print("NAME = ", s_name[1])
-#                 print("HOMEWORK_NUM = ", s_name[2])
-#
-#
-# if __name__ == '__main__':
-#     select = SelectSQL
-#     select.name_select
-#
-# conn = sqlite3.connect('homework.db')
-# tab = conn.cursor()
-# cur = tab.execute('SELECT * FROM TABINFO;')
-# cur_list_id = []
-# cur_list_name = []
-# cur_list_homework = []
-# for c in cur:
-#     cur_list_id.append(c[0])
-#     cur_list_name.append(c[1])
-#     cur_list_homework.append(c[2])
-#
-#
-# def select_sql_all():
-#     for c in cur:
-#         print("ID = ", c[0])
-#         print("NAME = ", c[1])
-#         print("HOMEWORK_NUM = ", c[2])
-#     conn.close()
-
-
 def select_sql():
-    conn = sqlite3.connect('homework.db')
-    tab = conn.cursor()
-    cur = tab.execute('SELECT * FROM TABINFO;')
     notice = '''
     请输入查询选项:
     输入1： 查询整个数据库
@@ -66,51 +17,49 @@ def select_sql():
     输入0： 退出
     '''
     while True:
+        conn = sqlite3.connect('homework.db')
+        tab = conn.cursor()
+        cur = []
+        for c in tab.execute('SELECT * FROM TABINFO;'):
+            cur.append(c)
         print(notice)
         select_all = input('请选择：')
         if select_all == '0':
             break
         elif select_all == '1':
             for c in cur:
-                print("ID = ", c[0])
-                print("NAME = ", c[1])
-                print("HOMEWORK_NUM = ", c[2])
+                print(f'学生ID:{c[0]:<10}学生姓名:{c[1]:<10}学生作业数{c[2]:<10}')
             conn.close()
-            break
         elif select_all == '2':
             id = input('请输入id')
-            for c in cur:
-                if id == c[0]:
-                    print("ID = ", c[0])
-                    print("NAME = ", c[1])
-                    print("HOMEWORK_NUM = ", c[2])
-                else:
-                    print(f'id为{id}的作业未查询到')
-                conn.close()
-            break
+            c_id_list = [str(c[0]) for c in cur]
+            if id not in c_id_list:
+                print(f'学生ID为{id}的作业未查询到')
+            else:
+                for c in cur:
+                    if id == str(c[0]):
+                        print(f'学生ID:{c[0]:<10}学生姓名:{c[1]:<10}学生作业数{c[2]:<10}')
+            conn.close()
         elif select_all == '3':
             name = input('请输入name')
-            for c in cur:
-                if name == c[1]:
-                    print("ID = ", c[0])
-                    print("NAME = ", c[1])
-                    print("HOMEWORK_NUM = ", c[2])
-                else:
-                    print(f'姓名为{name}的作业未查询到')
-                conn.close()
-
-            break
+            c_name_list = [str(c[1]) for c in cur]
+            if name not in c_name_list:
+                print(f'姓名为{name}的作业未查询到')
+            else:
+                for c in cur:
+                    if name == str(c[1]):
+                        print(f'学生ID:{c[0]:<10}学生姓名:{c[1]:<10}学生作业数{c[2]:<10}')
+            conn.close()
         elif select_all == '4':
             homework = input('请输入homework')
-            for c in cur:
-                if homework == c[2]:
-                    print("ID = ", c[0])
-                    print("NAME = ", c[1])
-                    print("HOMEWORK_NUM = ", c[2])
-                else:
-                    print(f'作业数为{homework}的作业未查询到')
-                conn.close()
-            break
+            c_home_list = [str(c[2]) for c in cur]
+            if homework not in c_home_list:
+                print(f'作业数为{homework}的作业未查询到')
+            else:
+                for c in cur:
+                    if homework == str(c[2]):
+                        print(f'学生ID:{c[0]:<10}学生姓名:{c[1]:<10}学生作业数{c[2]:<10}')
+            conn.close()
         else:
             print('输入错误请重试')
 

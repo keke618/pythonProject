@@ -22,5 +22,6 @@ class PingKamene:
 
 
 if __name__ == '__main__':
-    ping = PingKamene(dst='192.168.10.11')
-    ping.ping1()
+    # ping = PingKamene(dst='192.168.10.11')
+    # ping.ping1()
+    ssh = input('test')
