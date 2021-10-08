@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 # @Time : 2021/10/7 9:11 
 # @Author : keke618
-# @File : lab12-2.py 
+# @File : lab13-2.py
 # @Software: PyCharm
 import sqlite3
 
