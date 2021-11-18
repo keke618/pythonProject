@@ -7,8 +7,14 @@
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
-driver = webdriver.Chrome()
+# 使用无头浏览器
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+
+driver = webdriver.Chrome(options=chrome_options)
 # 用get打开 qq空间
 driver.get("https://i.qq.com/")
 # 定位到账号密码登录
@@ -17,10 +23,11 @@ driver.switch_to.frame("login_frame")
 driver.find_element("id", "switcher_plogin").click()       # 执行点击
 sleep(1)
 driver.find_element("id", "u").send_keys("1627061758")      # 键入账号
-driver.find_element("id", "p").send_keys("")                # 键入密码
+driver.find_element("id", "p").send_keys("")  # 键入密码
 sleep(1)
 driver.find_element("id", "login_button").click()            # 点击登录
-sleep(10)
+print(driver.page_source)
+sleep(5)
 driver.quit()
 
 
